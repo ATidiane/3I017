@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Twister</title>
+<link href="../css/enregistrement.css" rel="stylesheet" media="all" type="text/css"> 
+</head>
+<body>
+	<header id="header">
+		<!-- <div class="round_img">
+			<img src="../img/logo.png" alt="logo" height="42" width="42">
+		</div>-->
+		
+		<!-- <div id='connexion'>Connexion</div>-->
+		<ul>
+  		<li><a href="#home">Home</a></li>
+  		<li><a href="#news">News</a></li>
+  		<li><a href="#contact">Contact</a></li>
+  		<li><a href="#about">About</a></li>
+		</ul>
+	</header>
+	
+	
+	<div id="main">
+		
+		<ul class="slideshow">
+            <li><span></span></li>
+            <li><span></span></li>     
+        </ul>
+        
+		<!-- <img class="mySlides" src="../img/hands-world.jpg" style="width:100%">
+  		<img class="mySlides" src="../img/world-map.jpg" style="width:100%">-->	
+		
+		<div id="register_main" >
+		
+		<form method="GET" action="javascript:(function () {})()" >
+		
+			<div class="ids">
+				
+				<label for='prenom'>Prenom</label>	
+				<div class='errormsg'>Obligatoire</div>			
+				<input type="text" name="prenom" id='prenom' autofocus/>
+				<span class="error">!</span>
+			</div>
+			
+			<div class="ids">
+			
+				<label for='nom'>Nom</label>	
+				<div class='errormsg'>Obligatoire</div>
+				<input type="text" name="nom" id='nom'/>
+				<span class="error">!</span>
+			</div>
+			
+			<div class="ids">
+			
+				<label for='login'>Login</label>
+				<span class='errormsg'>Mot de passe trop courtsdqfdsqfqsdfsqdf</span>
+				<input type="text" name="login" id='login'/>
+				<span class="error">!</span>
+			</div>
+			
+			<div class="ids">
+			
+				<label for='email'>Email</label>
+				<div class='errormsg'>Obligatoire</div>
+				<input type="text" name="email" id='email'/>
+				<span class="error">!</span>
+			</div>
+			
+			<div class="ids">
+			
+				<label for='pass'>Password</label>
+				<div class='errormsg'>Obligatoire</div>
+				<input type="password" name="pass" id='pass'/>
+				<span class="error">!</span>
+			</div>
+			
+			<div class="ids">
+			
+				<label for='confirmez'>Confirmez</label>
+				<div class='errormsg'>Mot de passe trop courtsdqfdsqfqsdfsqdf</div>
+				<input type="password" name="confirmez" id='confirmez'/>
+				<span class="error">!</span>
+			</div>
+			
+			
+			<div id="register">
+				<input type="submit" value="s'enregistrer" id ='enregistrer'/>
+			</div>
+			
+			
+		</form>
+	</div>
+		
+	</div>
+	<footer id="footer"></footer>
+	<script src="../js/slideshow.js"></script>
+</body>
+</html>

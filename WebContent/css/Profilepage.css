@@ -1,0 +1,278 @@
+
+body{
+	margin: 0;
+	padding: 0;
+	background-color: GhostWhite;
+}
+
+#entete, #menu, #contenu, #footer {
+	padding: 1px;
+}
+
+#entete {
+	min-width: 100%;
+	background-color: #0086b3;
+	text-align: center;
+}
+
+#div-entete {
+	width: 90%;
+	margin: auto;
+	display: flex;
+	/*max-width: 1500px;*/
+	justify-content: space-between; 
+}
+
+#left-entete {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.round_img {
+	margin-top: 7px;
+}
+
+.round_img img {
+	overflow:hidden;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    
+}
+
+.div-search {
+	margin-left: 20px;
+}
+
+.div-search > input {
+	width: 300px;
+	height: 30px;
+	border-radius: 2px;
+	border: none;
+}
+
+.div-search > input:focus {
+	 background-color: white;
+}
+
+.div-search > label, #right-entete ul li, #post {
+	display: inline-block;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	width: 100px;
+	height: 30px;
+	margin-left: 5px;
+	background: linear-gradient(to top right, rgb(210, 202, 236), #b2dae8);
+	/*background: linear-gradient(to top right, #BBAE98, rgb(133, 109, 77));*/
+	line-height: 30px;
+	box-shadow: 0 2px gray;
+	cursor: pointer;
+}
+
+.div-search > label:hover , 
+.div-search > label:active, 
+#right-entete ul li:hover,
+#right-entete ul li:active,
+#post:hover, #post:active {
+	background: linear-gradient(to bottom left, rgb(186, 186, 186), #006b8f);
+	/*background: linear-gradient(to bottom left, rgb(186, 186, 186), rgb(133, 109, 77));*/
+}
+	
+.div-search > label:active, #right-entete ul li:active, #post:active {
+	transform: translateY(2px);
+}
+
+#right-entete {
+}
+
+#right-entete ul {
+	display: flex;
+	list-style-type: none;
+}
+
+#right-entete ul  li {
+	padding: auto;
+	min-width: 50%;
+	margin: 0 5px 0 0px;
+}
+
+textarea {
+	resize:none;
+}
+
+#footer {
+	background-color: #0086b3;
+	text-align: center;
+	clear: both;
+	border-radius: 0 0 1em 1em;
+}
+
+#main {
+	display: flex;
+	margin: auto;
+	width: 90%;
+	justify-content: space-between;
+}
+
+/*#main #stats {
+	flex: 1;
+}
+
+#main #messages {
+	flex: 1;
+}
+
+#main #bonus {
+	flex: 1
+}*/
+
+
+#stats, #bonus  {
+	text-align: center;
+	margin-top: 15px;
+	border: 2px solid #808000;
+	height: 300px;
+	width: 300px;
+	/*background: linear-gradient(to top right, rgb(206, 206, 206), #808000);*/
+	border-radius: 5px;
+}
+
+
+#stats h1, #div-friends h1 {
+	margin: 0;
+	background: linear-gradient(to top right, rgb(206, 206, 206), #808000);
+}
+
+#messages {
+	margin-top: 15px;
+	padding-left: 3em;
+	padding-right: 3em;
+	min-width: 500px;
+	max-width: 600px;
+}
+
+#div-new-message {
+	display: flex;
+	flex-direction: column;
+	zoom: 1;
+	border: 0.5px solid silver;
+	box-shadow: 2px 4px 1px Silver;
+	background-color: white;
+	text-align: right;
+	padding: 10px;
+}
+
+#div-new-message  label {
+	font-size: 20px;
+	font-family: Times;
+}
+
+#new-message {
+	font-family: initial;
+	font-size: 18px;
+	letter-spacing: 1px;
+	width: 100%;
+	border: 0;
+	border-bottom: 2px solid black;
+	box-sizing: border-box;
+	letter-spacing: 1px;
+	background-color: transparent;
+	margin-top: 10px;
+	padding-bottom: 5px;
+	
+}
+
+
+#post {
+	align-self: flex-end;
+	font-size: 16px;
+	font-family: initial;
+	width: 70px;
+	margin-top: 5px;
+}
+
+#new-message::placeholder {	font-size: 17px;}
+
+#new-message:focus { outline: none;}
+
+#div-list-messages {
+	margin-top: 15px;
+	/*border: 0.5px solid silver;*/
+}
+
+#list-messages {
+	
+}
+
+.div-one-msg {
+	margin-top: 10px;
+	border: 0.5px solid silver;
+	box-shadow: 2px 4px 1px Silver;
+	background-color: white;
+	padding: 10px;
+}
+
+.one-msg {
+	
+}
+
+.msg-auteur {
+	font-family: Times;
+	font-size: 20px;
+	font-weigth: bold;
+	margin-bottom: 15px;
+}
+
+.msg-text {
+	background-color: #fefeff;
+}
+
+.msg-date {
+	
+}
+
+.div-msg-buttons {
+	
+}
+
+.msg-buttons {
+	display: flex;
+}
+
+#btn-likes, #btn-comments {
+	background: linear-gradient(to top right, rgb(206, 206, 206), #808000);
+}
+
+
+#btn-comments {
+	
+}
+
+.div-comments {
+	
+}
+
+.div-one-comment {
+	
+}
+
+.one-comment {
+	
+}
+
+.comment-auteur {
+	
+}
+
+.comment-text {
+	
+}
+
+.comment-date {
+	
+}
+
+
