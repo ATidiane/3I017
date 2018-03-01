@@ -140,11 +140,15 @@ textarea {
 	border-radius: 5px;
 }
 
-
 #stats h1, #div-friends h1 {
 	margin: 0;
 	background: linear-gradient(to top right, rgb(206, 206, 206), #808000);
 }
+
+#stats #nb-friends {
+	display: flex;
+}
+
 
 #messages {
 	margin-top: 15px;
