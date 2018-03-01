@@ -1,0 +1,373 @@
+@CHARSET "UTF-8";
+
+#entete, #connexion_main, #footer {
+	padding: 2px;
+}
+
+#entete {
+	min-width: 100%;
+	background-color: #0086b3;
+	text-align: center;
+}
+
+#div-entete {
+	width: 90%;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+#left-entete {
+	display: flex;
+	align-items: center;
+}
+
+#right-entete ul, #left-entete ul {
+	list-style-type: none;
+}
+
+#right-entete ul li, #left-entete ul li {
+	display: inline-block;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	width: 100px;
+	height: 30px;
+	padding: 0 2px 0 2px;
+	background: linear-gradient(to top right, rgb(210, 202, 236), #b2dae8);
+	line-height: 30px;
+	box-shadow: 0 2px gray;
+	cursor: pointer;
+}
+
+#right-entete ul li:hover,
+#right-entete ul li:active ,
+#left-entete ul li:hover,
+#left-entete ul li:active {
+	background: linear-gradient(to bottom left, rgb(186, 186, 186), #006b8f);
+}
+
+.round_img img:active,
+#right-entete ul li:active,
+#left-entete ul li:active {
+	transform: translateY(2px);
+}
+
+body {
+	margin: 0;
+	width: auto;
+	height: auto;
+	min-width: 600px;
+	background-image: url(../img/africa-small.png);
+	background-color: White;
+}
+
+.round_img {
+	margin-top: 7px;
+}
+
+.round_img img {
+	overflow:hidden;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    
+}
+
+#register_main h3 {
+	margin: 0;
+	margin-bottom: 10px;
+	padding: 10px;
+	text-align: center;
+	background: linear-gradient(to top right, rgb(206, 206, 206), #808000);
+	border-radius: 60px 60px 0 0;
+}
+
+#register_main  {
+	position: relative;
+	border: solid transparent;
+	border-radius: 50px;
+	width: 360px;
+	height: auto;
+	box-shadow: 2px 2px 5px transparent;
+	margin-top: 50px;
+	margin-left: auto; 
+	margin-right: 50px;
+	background: rgb(234, 247, 251);
+	background: rgba(234, 247, 251, 0.9);
+	padding-bottom: 5px;
+}
+
+#register_main .ids > label {
+	display: inline-block;
+}
+
+#register_main .ids {
+	width: 270px;
+	font-weight: bold;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /*chalkduster,fantasy;*/
+	margin: auto;
+}
+
+input[type=text], input[type=password] {
+	width: 100%;
+	font-size: 15px;
+	letter-spacing: 1px;
+    padding: 10px 0px;
+    margin: 2px 0;
+    box-sizing: border-box;
+    border: 0;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+	border-color: #0086b3;
+	outline: none;
+}
+
+#register_main .register {
+	width: 270px;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+	
+}
+
+#register_main .register > input:hover {
+	color: white;
+	background-color: #0086b3;
+}
+
+#register_main .register > input:active {
+	color: white;
+	background-color: #0086b3;
+	box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
+input[type=submit] {
+	wdith: 100%;
+	padding: 5px;
+	background-color: white;
+	font-size: 17px;
+	/*font-weight: bold;*/
+	color: #0086b3	;
+	font-family: initial;
+	border: 2px solid #0086b3;
+    border-radius: 30px;
+	box-shadow: 0 9px #999;
+	cursor: pointer;
+}
+
+.error {
+	position: absolute;
+	display: inline-block;
+    right:40px;
+    width:30px;
+    height:30px;
+    text-align:center;
+    color: red;
+    font-size: 23px;
+    border-radius: 100px;
+    border: 2px solid red;
+    <strong>line-height: 20px; /* 30 - 10 */</strong>
+}
+
+
+.errormsg {
+	position: absolute;
+	display: inline-block;
+	width: auto;
+	max-width: 170px;
+	right: 60px;
+	color: black;
+	background: WhiteSmoke;
+	box-shadow: 5px 5px 1px Silver;
+	border-radius: 10px;
+	-webkit-transform: skew(-10deg);
+	-moz-transform: skew(-10deg);
+	-o-transform: skew(-10deg);
+	transform: skew(-10deg);
+	font-size: 12px;
+	word-wrap: break-word;
+	
+}
+
+#barError {
+	width: 50%;
+	height: auto;
+	margin: auto;
+	color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	text-align: center;
+	font-family: Times;
+	font-size: 17px;
+	line-height: 25px;
+	background: #A80E28;
+}
+
+/*.errormsg::after {
+	content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent GhostWhite transparent transparent;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Brouillon
+
+.slideshow li span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: transparent;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+    opacity: 0;
+    z-index: 0;
+	-webkit-backface-visibility: hidden;
+    -webkit-animation: imageAnimation 12s linear infinite 0s;
+    -moz-animation: imageAnimation 12s linear infinite 0s;
+    -o-animation: imageAnimation 12s linear infinite 0s;
+    -ms-animation: imageAnimation 42s linear infinite 0s;
+    animation: imageAnimation 42s linear infinite 0s;
+}
+
+.slideshow li:nth-child(1) span { background-image: url(../img/hands-world.jpg); }
+.slideshow li:nth-child(2) span { 
+	background-image: url(../img/world-map.jpg);
+	-webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    -o-animation-delay: 1s;
+    -ms-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+@-webkit-keyframes imageAnimation { 
+	0% {
+	    opacity: 0;
+	    -webkit-animation-timing-function: ease-in;
+	}
+	8% {
+	    opacity: 0;
+	    -webkit-transform: scale(1.05);
+	    -webkit-animation-timing-function: ease-out;
+	}
+	17% {
+	    opacity: 0;
+	    -webkit-transform: scale(1.1) rotate(3deg);
+	}
+	25% {
+	    opacity: 0;
+	    -webkit-transform: scale(1.1) rotate(3deg);
+	}
+	100% { opacity: 0 }
+}
+@-moz-keyframes imageAnimation { 
+	0% {
+	    opacity: 0;
+	    -moz-animation-timing-function: ease-in;
+	}
+	8% {
+	    opacity: 0;
+	    -moz-transform: scale(1.05);
+	    -moz-animation-timing-function: ease-out;
+	}
+	17% {
+	    opacity: 0;
+	    -moz-transform: scale(1.1) rotate(3deg);
+	}
+	25% {
+	    opacity: 0;
+	    -moz-transform: scale(1.1) rotate(3deg);
+	}
+	100% { opacity: 0 }
+}
+@-o-keyframes imageAnimation { 
+	0% {
+	    opacity: 0;
+	    -o-animation-timing-function: ease-in;
+	}
+	8% {
+	    opacity: 0;
+	    -o-transform: scale(1.05);
+	    -o-animation-timing-function: ease-out;
+	}
+	17% {
+	    opacity: 0;
+	    -o-transform: scale(1.1) rotate(3deg);
+	}
+	25% {
+	    opacity: 0;
+	    -o-transform: scale(1.1) rotate(3deg);
+	}
+	100% { opacity: 0 }
+}
+@-ms-keyframes imageAnimation { 
+	0% {
+	    opacity: 0;
+	    -ms-animation-timing-function: ease-in;
+	}
+	8% {
+	    opacity: 0;
+	    -ms-transform: scale(1.05);
+	    -ms-animation-timing-function: ease-out;
+	}
+	17% {
+	    opacity: 0;
+	    -ms-transform: scale(1.1) rotate(3deg);
+	}
+	25% {
+	    opacity: 0;
+	    -ms-transform: scale(1.1) rotate(3deg);
+	}
+	100% { opacity: 0 }
+}
+@keyframes imageAnimation { 
+	0% {
+	    opacity: 0;
+	    animation-timing-function: ease-in;
+	}
+	8% {
+	    opacity: 1;
+	    transform: scale(1.05);
+	    animation-timing-function: ease-out;
+	}
+	17% {
+	    opacity: 1;
+	    transform: scale(1.1) rotate(3deg);
+	}
+	25% {
+	    opacity: 0;
+	    transform: scale(1.1) rotate(3deg);
+	}
+	100% { opacity: 0 }
+}
+
+Show at least something when animations not supported
+.no-cssanimations .slideshow li span{
+	opacity: 1;
+}*/
