@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd"> 
 <web-app> 
@@ -125,3 +126,157 @@
 		<url-pattern>/ListFollowers</url-pattern>
 	</servlet-mapping>
 </web-app>
+||||||| merged common ancestors
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd"> 
+<web-app> 
+	<display-name>Let's_Twister_IT</display-name> 
+	
+	<servlet>
+		<servlet-name>User</servlet-name>
+		<servlet-class>servlets.User</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>servlets.Login</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>servlets.Logout</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddFriend</servlet-name>
+		<servlet-class>servlets.AddFriend</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>RemoveFriend</servlet-name>
+		<servlet-class>servlets.RemoveFriend</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListFriends</servlet-name>
+		<servlet-class>servlets.ListFriends</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PostMessage</servlet-name>
+		<servlet-class>servlets.PostMessage</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteMessage</servlet-name>
+		<servlet-class>servlets.DeleteMessage</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListMessages</servlet-name>
+		<servlet-class>servlets.ListMessages</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetStats</servlet-name>
+		<servlet-class>servlets.GetStats</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetMessages</servlet-name>
+		<servlet-class>servlets.GetMessages</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Like</servlet-name>
+		<servlet-class>servlets.Like</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UnLike</servlet-name>
+		<servlet-class>servlets.UnLike</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>PostComment</servlet-name>
+		<servlet-class>servlets.PostComment</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ListFollowers</servlet-name>
+		<servlet-class>servlets.ListFollowers</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetLike</servlet-name>
+		<servlet-class>servlets.GetLike</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ChangeBackground</servlet-name>
+		<servlet-class>servlets.ChangeBackground</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>GetBackground</servlet-name>
+		<servlet-class>servlets.GetBackground</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>User</servlet-name>
+		<url-pattern>/createUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/Logout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddFriend</servlet-name>
+		<url-pattern>/AddFriend</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RemoveFriend</servlet-name>
+		<url-pattern>/RemoveFriend</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListFriends</servlet-name>
+		<url-pattern>/ListFriends</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PostMessage</servlet-name>
+		<url-pattern>/PostMessage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteMessage</servlet-name>
+		<url-pattern>/DeleteMessage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListMessages</servlet-name>
+		<url-pattern>/ListMessages</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetStats</servlet-name>
+		<url-pattern>/GetStats</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetMessages</servlet-name>
+		<url-pattern>/GetMessages</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Like</servlet-name>
+		<url-pattern>/Like</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UnLike</servlet-name>
+		<url-pattern>/UnLike</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PostComment</servlet-name>
+		<url-pattern>/PostComment</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListFollowers</servlet-name>
+		<url-pattern>/ListFollowers</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetLike</servlet-name>
+		<url-pattern>/GetLike</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangeBackground</servlet-name>
+		<url-pattern>/ChangeBackground</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetBackground</servlet-name>
+		<url-pattern>/GetBackground</url-pattern>
+	</servlet-mapping>
+</web-app>
+>>>>>>> b9891f11d3bd0e233401915b6db3dc6e10af3e15
