@@ -1,0 +1,329 @@
+@CHARSET "UTF-8";
+
+#entete, #connexion_main, #footer {
+	padding: 2px;
+}
+
+
+
+.slideshow,
+.slideshow:after {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    list-style-type: none; 
+}
+
+#entete {
+	min-width: 100%;
+	background-color: #0086b3;
+	text-align: center;
+}
+
+#div-entete {
+	width: 90%;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+#left-entete {
+	display: flex;
+	align-items: center;
+}
+
+#right-entete ul, #left-entete ul {
+	list-style-type: none;
+}
+
+#right-entete ul li,
+ #left-entete ul li {
+	display: inline-block;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	width: 100px;
+	height: 30px;
+	padding: 0 2px 0 2px;
+	background: linear-gradient(to top right, rgb(210, 202, 236), #b2dae8);
+	line-height: 30px;
+	box-shadow: 0 2px gray;
+	cursor: pointer;
+}
+
+#right-entete ul li:hover,
+#right-entete ul li:active ,
+#left-entete ul li:hover,
+#left-entete ul li:active {
+	background: linear-gradient(to bottom left, rgb(186, 186, 186), #006b8f);
+}
+
+.round_img img:active,
+#right-entete ul li:active,
+#left-entete ul li:active {
+	transform: translateY(2px);
+}
+
+body {
+	margin: 0;
+	width: auto;
+	height: auto;
+	min-width: 600px;
+	background-image: url(../img/africa-small.png);
+}
+
+.round_img {
+	margin-top: 7px;
+}
+
+.round_img img {
+	overflow:hidden;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    
+}
+
+#connexion_main h3 {
+	margin: 0px;
+	margin-bottom: 10px;
+	padding: 10px;
+	text-align: center;
+	background: linear-gradient(to top right, rgb(206, 206, 206), #808000);
+	border-radius: 60px 60px 0 0;
+}
+
+#connexion_main  {
+	position: relative;
+	border: solid transparent;
+	border-radius:50px;
+	width: 360px;
+	height: auto;
+	box-shadow: 2px 2px 5px transparent;
+	margin-left: auto;
+	margin-top: 50px;
+	margin-right: 50px;
+	background: rgb(234, 247, 251);
+	background: rgba(234, 247, 251, 0.9);
+	padding-bottom: 5px;
+}
+
+#connexion_main .ids > label {
+	display: inline-block;
+}
+
+#connexion_main .ids {
+	width: 270px;
+	font-weight: bold;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /*chalkduster,fantasy;*/
+	margin-bottom: 5px;
+	margin: auto;
+}
+
+input[type=text], input[type=password] {
+	width: 100%;
+	font-size: 15px;
+	letter-spacing: 1px;
+    padding: 12px 0px;
+    margin: 2px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+	border-color: #0086b3;
+	outline: none;
+}
+
+
+#connexion_main #connect {
+	width: 270px;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+#connexion_main #connect > input:hover,
+#searchMail:hover {
+	color: white;
+	background-color: #0086b3;
+}
+
+#connexion_main #connect > input:active,
+#searchMail:active {
+	color: white;
+	background-color: #0086b3;
+	box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+input[type=submit] {
+	wdith: 100%;
+	padding: 5px;
+	background-color: white;
+	font-size: 17px;
+	/*font-weight: bold;*/
+	font-family: initial;
+	color: #0086b3; 
+	border: 2px solid #0086b3;
+    border-radius: 30px;
+    box-shadow: 0 9px #999;
+	cursor: pointer;
+}
+
+.error {
+	position: absolute;
+	display: inline-block;
+    right:40px;
+    width:30px;
+    height:30px;
+    text-align:center;
+    color: red;
+    font-size: 23px;
+    border-radius:100px;
+    border: 2px solid red;
+    <strong>line-height: 20px; /* 30 - 10 */</strong>
+}
+
+
+.errormsg {
+	position: absolute;
+	display: inline-block;
+	width: auto;
+	max-width: 170px;
+	right: 60px;
+	color: black;
+	background: WhiteSmoke;
+	box-shadow: 5px 5px 1px Silver;
+	border-radius: 10px;
+	-webkit-transform: skew(-10deg);
+	-moz-transform: skew(-10deg);
+	-o-transform: skew(-10deg);
+	tranform: skew(-10deg);
+	font-size: 13px;
+	word-wrap: break-word;
+	
+}
+
+#barError {
+	width: 50%;
+	height: auto;
+	margin: auto;
+	color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	text-align: center;
+	font-family: Times;
+	font-size: 17px;
+	line-height: 25px;
+	background: #A80E28;
+}
+	
+#oubli {
+	width: 270px;
+	margin: auto;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 16px;
+	text-align: right;
+	padding-top: 10px;
+}
+
+#oubli:hover {
+	color: #0086b3;
+	cursor: pointer;
+}
+
+.modal-reinitialize {
+	display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#reinitialize-content {
+	position: relative;
+	width: 400px;
+	height: 230px;
+	margin: auto;
+	margin-top: 47px;
+    padding-bottom: 20px;
+	background-color: #fefefe;
+	border-radius: 10px;	
+    border: 1px solid #888;
+}
+
+/*#reinitialize-content #reinitialize-header {
+	width: 100%;
+	height: 40px;
+	border-radius: 10px 10px 0 0;
+	background-color: #0086b3;
+	color: white;
+	text-align: center;
+	/*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 20px;
+	line-height: 35px;
+}*/
+
+#reinitialize-content #reinitialize-header {
+	margin: 0px;
+	margin-bottom: 10px;
+	padding: 10px;
+	text-align: center;
+	font-family: initial;
+	font-weight: bold;
+	font-size: 20px;
+	background: linear-gradient(to top right, rgb(206, 206, 206), #808000);
+	border-radius: 10px 10px 0 0;
+}
+
+#reinitialize-body {
+	width: 300px;
+	margin: auto;
+}
+
+/* The Close Button */
+.close {
+	width: 40x;
+	height: 30px;
+	border-radius: 10px;
+    color: white;
+    float: right;
+    margin-right: 5px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*All*/
+::-webkit-input-placeholder { font-family: initial; font-style: italic; font-size:17px; }
+::-moz-placeholder { font-family: initial; font-style: italic; font-size:17px; } /* firefox 19+ */
+:-ms-input-placeholder { font-family: initial; font-style: italic; font-size:17px; } /* ie */
+input:-moz-placeholder { font-family: initial; font-style: italic; font-size:17px; }
+
+
+#searchMail-div {
+	width: 270px;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+}
