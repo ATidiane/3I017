@@ -1,51 +1,3 @@
-<<<<<<< HEAD
-/**
- * 
- */
-
-/**
- * 
- */
-
-/*function init() {
-	env = new Object ();
-	
-	//Event to activate when last message appear
-	$("body").on("appear", function(event, $affected) {
-		$.clear_appear();
-		completeMessages();
-	});
-	
-	// Asks to the client to activate cookies
-	if (!navigator.cookieEnabled) {
-        alert("Activez vos cookies !");
-	}
-	
-	noConnection = false;
-	if (noConnection) {
-		
-		env.id = 1;
-		env.login = "Ahmed";
-		env.key = "MGVNX120";
-	} else {
-		var c = getCookie("page");
-		var k = getCookie("key");
-		if (c == null || c == 0) {
-			makeWelcomePanel(); 
-		} else if (c == 1) {
-			makeConnexionPanel();
-		} else if (c == 2) {
-			if (k.length != 0) {
-				logout();
-				setCookie("page", 1);
-				makeConnexionPanel();
-			}
-		}
-		
-	}
-	
-}*/
-
 function signout() {
 	c = getCookie("page");
 	if (c == 2) {
@@ -2814,4 +2766,70 @@ function getCookie(sName) {
 /*####################################################################################################*
  *---------------------------------------------End Cookies--------------------------------------------* 
  *####################################################################################################*/
->>>>>>> b9891f11d3bd0e233401915b6db3dc6e10af3e15
+
+
+
+
+
+
+
+
+
+
+
+
+/*####################################################################################################*
+ *----------------------------------------------Brouillon---------------------------------------------* 
+ *####################################################################################################*/
+
+
+
+
+/**
+ * 
+ */
+
+/**
+ * 
+ */
+
+/*function init() {
+	env = new Object ();
+	
+	//Event to activate when last message appear
+	$("body").on("appear", function(event, $affected) {
+		$.clear_appear();
+		completeMessages();
+	});
+	
+	// Asks to the client to activate cookies
+	if (!navigator.cookieEnabled) {
+        alert("Activez vos cookies !");
+	}
+	
+	noConnection = false;
+	if (noConnection) {
+		
+		env.id = 1;
+		env.login = "Ahmed";
+		env.key = "MGVNX120";
+	} else {
+		var c = getCookie("page");
+		var k = getCookie("key");
+		if (c == null || c == 0) {
+			makeWelcomePanel(); 
+		} else if (c == 1) {
+			makeConnexionPanel();
+		} else if (c == 2) {
+			if (k.length != 0) {
+				logout();
+				setCookie("page", 1);
+				makeConnexionPanel();
+			}
+		}
+		
+	}
+	
+}*/
+
+
