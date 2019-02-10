@@ -1,12 +1,8 @@
 package services;
 
-import org.json.JSONObject;
-
 import com.mongodb.BasicDBObject;
 
 import tools.MessageTools;
-import tools.ServiceTools;
-import tools.UserTools;
 
 public class PostCommentS {
 

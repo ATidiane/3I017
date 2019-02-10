@@ -1,149 +1,126 @@
-/**
- * 
- */
+function makeMainPanel(fromId, fromLogin, query) {
+    if(fromId == undefined) {
+        fromId = -1;
+    }
 
-function makeMainPanel (fromId, fromLogin, query) {
-	
-	env.msgs = [];
-	env.minId = -1;
-	env.maxId = -1;
-	
-	alert(fromId);
-	
-	if(fromId == undefined) {
-		fromId = -1;
-	}
-	
-	env.fromId = fromId;
-	env.fromLogin = fromLogin;
-	
-	console.log(env.fromLogin);
-	env.query = query;
-	
-	alert(env.fromId);
-	//var s = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><title>Main Page</title>";
-	//s += "<link href=\"Mainpage.css\" rel=\"stylesheet\" type=\"text/css\" /></head>";
-	var s ="";
-	if (env.fromId < 0) {
-		s + = "<div id = \"title\"> Page de "+ fromLogin +"</div>";
-	} else if (!env.follows.has(env.fromId)) {
-		s += "<div id = \"add\"> Page de "+ fromLogin ;
-		s += "<img src=\"Image/add.png\" title=\"Suivie\" alt=\"Suivie\" onclick=\"javascript:follow()\" >";
-		s += "</div>";
-	} else {
-		s += "<div id = \"remove\"> Page de "+ fromLogin ;
-		s += "<img src=\"Image/remove.png\" title=\"Suivie\" alt=\"Suivie\" onclick=\"javascript:unfollow()\" >";
-		s += "</div>";
-	}
-	
-	if (env.fromId > 0) {
-		s += "<div id = \"pageprofil\"> Page de "+ fromLogin ;
-		s += "<a href =\" \" >Page de Profil</a>;
-		s += "</div>";
-	}
+    env.fromId = fromId;
+    env.minId = -1;
+    env.maxId = -1;
+    env.msgs = new Array();
+    env.nb = 10;
+    env.query = null;
 
-	document.body.innerHTML = s;
-}
+    var search = "";
+    if ($(".div-search").length) {
+        search = "";
+    } else {
+        search += "<div class='div-search'>" +
+        "<input type='text' name='search' id='search' placeholder='Ex: Ahmed' onclick=''/>" +
+        "<label for='search' onsubmit=''>Recherchez</label>" +
+        "</div>";
+    }
 
-function completeMessagesResponse2(rep) {
-	//var tab = JSON.parse(rep, revival);
-	//var lastId = undefined;
-	/*for (var i=0; i<tab.length; i++) {
-		$("#messages").append(tab[i].getHtml());
-		env.msgs[tab[i].id] = tab[i];
-		
-		if (tab[i].id > env.maxId) {
-			env.maxId = tab[i].id;
-		}
-		
-		if ((env.minId < 0) || (tab[i].id < env.minId)) {
-			env.minId = tab[i].id;
-		}
-		
-		lastId = tab[i].id;
-	}
-	
-	$("#message_" + lastId).appear();
-	
-	$.force.appear();*/
-	var json = JSON.parse(rep);
-	var s = "<div id='list-messages'>";
-	var list_messages = json.list_messages;
-	for (var i=0; i<list_messages.length; i++) {
-		var one_msg = JSON.stringify(list_messages[i]);
-		var one_msg_json = JSON.parse(one_msg);
-		var msg_text = one_msg_json.text;
-		var msg_date = one_msg_json.date.$date;
-		var msg_auteur = one_msg_json.auteur;
-		var msg_auteur_login = msg_auteur.login;
-		var msg_comments = one_msg_json.comments;
-		
-		var comment_html = "";
-		for (var j=0; j<msg_comments.length; j++) {
-			var one_comment = msg_comments[j];
-			//var one_comment_
-			var comment_auteur = one_comment.auteur.login;
-			var comment_text = one_comment.texte;
-			var comment_date = one_comment.date.$date;
-			comment_html += "<div class='div-one-comment'>" +
-			"<div class='one-comment'>" + 
-			"<div class='photo-comment-auteur'>" +
-			"<img src=\"img/icons/avatar.png\" alt=\"avatar\" height=\"42\" width=\"42\"/> " +
-			"<div class='comment-auteur-text'>" +
-			"<span class='comment-auteur'>" + comment_auteur +
-			"</span> " + comment_text +
-			"</div>" +
-			"<div class='comment-date'>" + comment_date +
-			"</div>" +
-			"</div>" +
-			"</div>" +
-			"</div>";
-		}
-		
-		
-		s += "<div class='div-one-msg'>" +
-		"<div class='one-msg'>" +
-			"<div class='photo-msg-auteur'>" +
-				"<img src=\"img/icons/avatar.png\" alt=\"avatar\" height=\"55\" width=\"55\"/> " +
-				"<div class='msg-auteur'>" + msg_auteur.login +
-				"</div>" +
-				"<div class='msg-date'>" + msg_date +
-				"</div>" +	
-			"</div>" +
-			"<div class='msg-text'>" + msg_text +
-			"</div><hr/>" +
-		
-			"<div class='div-msg-buttons'>" +
-				"<div class='msg-buttons'>" +
-		
-					"<div class='btn-likes'>" +
-					"<img src=\"img/icons/like.png\" alt=\"like\" height=\"32\" width=\"32\"/> " +
-					"j'aime " +
-					"</div>" +
-					
-					"<div class='btn-comments'>" +
-					"<img src=\"img/icons/pen.png\" alt=\"pen\" height=\"32\" width=\"32\"/> " +
-					"réagir " + 
-					"</div>" +
-		
-				"</div>" +
-			"</div>" +
-		"</div>" +
-		"<div class='div-comments'>" + 
-			comment_html +
-		"</div>" +
-		"<div class='div-new-comment'>" +
-			"<img src=\"img/icons/avatar.png\" alt=\"avatar\" height=\"42\" width=\"42\"/> " +
-			"<textarea name='new-comment' class='new-comment' style='overflow-y: visible;'" +
-			"placeholder=\"Qu'en pensez vous ?\">" +
-			"</textarea>" +
-			"<input type='submit' name='post-comment' class='post-comment' value='Postez'/>" +
-		"</div>" +
-		"</div>";
-		
-	}
-	s += "</div>";
-	$("#div-list-messages").html(s);
-	//$.force_appear();
-	
+    var rightEnteteUl = "<ul>";
+    var bg_header = "<div id='bg'></div>";
+    var new_message = "<div id='div-new-message'>" +
+    "<textarea name='new-message' id='new-message' cols='76' rows='1' maxlength='140' placeholder='Racontez-nous!'" +
+    "onclick=\"javascript:if(document.getElementById('new-message').rows == 2) return; document.getElementById('new-message').rows = 3\" " +
+    "onblur=\"javascript:if(document.getElementById('new-message').value.length == 0) document.getElementById('new-message').rows = 1\"></textarea>" +
+    "<input type='submit' name='post' id='post' value='Postez'/>" +
+    "</div>";
+
+    var suivre_id = "suivre-"+fromId;
+    var nosuivre_id = "nosuivre-"+fromId;
+    var nb_abonnements
+
+    var id_forfriend = fromId;
+    if (fromId < 0) {
+        id_forfriend = env.id;
+        var link = "<link href=\"css/MainPage.css\" rel=\"stylesheet\" media=\"all\" type=\"text/css\">";
+        rightEnteteUl += "<li id='profil'>Hi "+ fromLogin +"!</li>";
+    } else if (fromId > 0) {
+        var link = "<link href=\"css/MainPage.css\" rel=\"stylesheet\" media=\"all\" type=\"text/css\">";
+        rightEnteteUl += "<li id='accueil'>Accueil</li>";
+
+        if (env.fromId == env.id) {
+            id_forfriend = env.id;
+            bg_header = "<div id='bg-header'>" +
+            "<span class='name-profil'>"+ fromLogin + "</span>" +
+            "<input type='button' value='Editer votre profil' class='btn-bg-header' />"+
+            "</div>";
+        } else if (env.follows.has(fromId)) {
+            id_forfriend = fromId;
+            bg_header = "<div id='bg-header'>" +
+            "<span class='name-profil'>"+ fromLogin + "</span>" +
+            "<input id="+nosuivre_id+" type='button' value='Ne plus suivre' class='btn-bg-header' " +
+                    "onclick=\"removeFriend('"+env.key+"',"+fromId+");\"/>"+
+            "</div>";
+        } else if (!env.follows.has(fromId)){
+            id_forfriend = fromId;
+            bg_header = "<div id='bg-header'>" +
+            "<span class='name-profil'>"+ fromLogin + "</span>" +
+            "<input id="+suivre_id+" type='button' value='Suivre' class='btn-bg-header'" +
+                    "onclick=\"addFriend('"+env.key+"',"+fromId+");\"/>"+
+            "</div>";
+            new_message = '';
+        }
+    }
+
+    rightEnteteUl += "<li id='deconnexion'>Deconnexion</li></ul>";
+
+    var main = "" +
+    "<div id='main'>" +
+        "<section id='stats'>" +
+        "<h1>Statistiques</h1>" +
+        "<div id='#nb-friends-messages'>" +
+            "<div id='abonnements' class='stats-childs'> Abonnements " +
+            "<span></span>" +
+            "</div>" +
+            "<div id='abonnes' class='stats-childs'> Abonnés " +
+            "<span></span>" +
+            "</div>" +
+            "<div id='tweets' class='stats-childs'> Nombre de Tweets " +
+            "<span></span>" +
+            "</div>" +
+        "</div>" +
+        "</section>" +
+
+        "<section id='messages'>" +
+        new_message +
+        "<div id='div-list-messages'>" +
+
+        "</div>" +
+
+
+        "</section>" +
+
+        "<section id='bonus'>" +
+            "<div id='div-friends'>" +
+                "<h1>Abonnements</h1>" +
+                "<div id='friends'></div>" +
+                "<h3 id='h3-abonnes'onclick=\"listFollowers('"+env.key+"',"+id_forfriend+");\">Voir les abonnés " +
+                "<img src=\"img/icons/arrow_right.png\" alt=\"arrow_right\" height=\"32\" width=\"32\"/>" +
+                "</h3>" +
+            "</div>" +
+        "</section>" +
+    "</div>";
+
+    $('link').replaceWith(link);
+    $('#left-entete ul').remove();
+    $('.round_img').after(search);
+    $('#right-entete ul').replaceWith(rightEnteteUl);
+
+    if (env.fromId == -1) {
+        $('#bg-header').replaceWith(bg_header);
+    }
+
+    if ($('#bg').length) {
+        $('#bg').replaceWith(bg_header);
+    } else {
+        $('#bg-header').replaceWith(bg_header);
+    }
+    $('#main').replaceWith(main);
+
+    listFriends(env.key, id_forfriend);
+    attachEvents();
 }

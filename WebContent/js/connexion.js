@@ -37,20 +37,25 @@ function verifFormConnection(login, pass) {
 }
 
 function connecte(login, pass) {
-	if (!noConnection) {
-		$.ajax({
-			type : "GET",
-			url : "http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/Login",
-			data : "login=" +login+ "&mdp="+pass,
-			datatype : "json",
-			error : function(jqXHR, textStatus, errorThrown) {
-				alert(textStatus);
-			},
-			success : responseConnexion
-		});
-	} else {
-		responseConnexion({"key:3250", "id:35", "login:viniya", "follows:[2]"});
-	}
+    if (!noConnection) {
+        $.ajax({
+            type : "GET",
+            url : "http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/Login",
+            data : "login="+login+"&mdp="+pass,
+            datatype : "json",
+            error : function(jqXHR, textStatus, errorThrown) {
+                alert(textStatus);
+            },
+            success : function (rep) {
+                if (responseConnexion(rep)) {
+                    completeMessages(rep.key, -1, -1, -1, 10);
+                }
+            }
+        });
+    } else {
+        responseConnexion({"key":325, "id":3, "login":"viniya", "follows":[2]});
+    }
+    alert("OK");
 }
 
 function responseConnexion(rep) {}

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: 3I017
+Bundle-SymbolicName: 3I017
+Bundle-Version: 1.0.0.qualifier
+Export-Package: db,
+ services,
+ servlets,
+ tests,
+ tools

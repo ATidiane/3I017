@@ -1,186 +1,257 @@
-/**
- * 
- */
-
-function teste() {
-	alert("Test");
-}
+/*####################################################################################################*
+ *-------------------------------------------Complete Messages-----------------------------------------*
+ *####################################################################################################*/
 
 function revival(key,value) {
-	
-	if( value.error != 0 ){
-		var o = new Object(value.error);
-		return o;
-	}
-	if(value.comments != undefined ){
-		var m = new Message(value.id,value.author,value.text,value.date,value.comments);
-		return m;
-	} else if(value.texte != undefined) {
-		var c = new Commentaire(value.id,value.author,value.text,value.date);
-		return c;
-	} else if (key =='date') {
-		var d = new Date(value);
-		return d;
-	} else {
-		return value;
-	}
-	
+    console.log("in revival");
+    if(value.error == 0 ){
+        alert("error");
+        var o = new Object(value.error);
+        return o;
+    }
+
+    if(value.comments != undefined ){
+        console.log("salut");
+        var m = new Message(value.id,value.auteur,value.text,value.date,value.comments);
+        return m;
+    } else if(value.texte != undefined) {
+        console.log("coucou");
+        var c = new Commentaire(value.id,value.auteur,value.texte,value.date);
+        return c;
+    } else if (key =='date') {
+        console.log("date");
+        var d = new Date(value.$date);
+        return d;
+    } else {
+        return value;
+    }
 }
 
 
+function completeMessagesResponse(rep) {
+    var tab = JSON.parse(rep, revival).list_messages;
+    var lastId = undefined;
+    for (var i=0; i<tab.length; i++) {
+        $("#div-list-messages").append(tab[i].getHtml());
+        env.msgs[tab[i].id] = tab[i];
+        if (tab[i].id > env.maxId) {
+            env.maxId = tab[i].id;
+        }
+
+        if ((env.minId < 0) || (tab[i].id < env.minId)) {
+            env.minId = tab[i].id;
+        }
+
+        lastId = tab[i].id;
+    }
+    env.lastId = lastId;
+    /*env.maxId = env.minId;
+    env.minId = -1;*/
+
+    $("#tweets span").html(env.msgs.length);
+    $("#message_" + lastId).appear();
+
+    $.force_appear();
+}
 
 function completeMessages() {
-	var tab = getFromLocalDb(env.fromId, -1, env.minId, 10);
-	if (!noConnection)  {
-		$.ajax ({
-			type:"GET",
-			url:"",
-			datatype:"json",
-			data:"login=" +login+ "&pass="+pass,
-			error:function(jqXHR, textStatus, errorThrown) {
-				alert(textStatus);
-			},
-			success: completeMessagesReponse;
-		});
-	} else {
-		var tab = getFromLocalDb(env.fromId, -1, env.minId, 10);
-		completeMessagesReponse(JSON.stringify(tab));
-	}
+    var max = env.maxId;
+    var min = env.minId;
+    if (env.lastId != undefined) {
+        max = env.lastId;
+        min = -1;
+    }
+    if (env.key != undefined) {
+        if (!noConnection)  {
+            $.ajax ({
+                type:"GET",
+                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/GetMessages",
+                datatype:"text/plain",
+                data:"key=" +env.key+ "&from=" +env.fromId+ "&id_max=" +max+ "&id_min=" +min+ "&nb=" +env.nb+ "&query=" +env.query,
+                error:function(jqXHR, textStatus, errorThrown) {
+                    alert(textStatus);
+                },
+                success: completeMessagesResponse
+            });
+        } else {
+            /*var tab = getFromLocalDb(env.fromId, -1, env.minId, 10);
+            completeMessagesReponse(JSON.stringify(tab));*/
+        }
+    }
 }
 
-function getFromLocalDb(from, minId, maxId, nbMax) {
-	var tab = [];
-	var nb = 0;
-	var f = undefined;
 
-	if (from > 0) {
-		f = follows[from];
-		if (f == undefined) {
-			f = new Set();
-		}
-	}
-	
-	for (var i=localdb.length-1; i>=0; i--) {
-		if ((nbMax >= 0) && (nb >= nbMax)) {
-			break;
-		}
-		
-		if (localdb[i] == undefined) {
-			continue;
-		}
-		
-		if (((maxId < 0) || (localdb[i].id < maxId)) &&
-				(localdb[i].id > minId)) {
-			if ((from < 0) || (localdb[i].auteur.id == from) ||
-					(f.has(localdb[i].auteur.id))) {
-				tab.push(localdb[i]);
-				nb++;
-			}
-		}
-	}
-	
-	return tab;
-	
-}
+/*####################################################################################################*
+ *-------------------------------------------Refresh Messages-----------------------------------------*
+ *####################################################################################################*/
 
-function completeMessagesReponse(rep) {
-	var tab = JSON.parse(rep, revival);
-	var lastId = undefined;
-	
-	for (var i=0; i<tab.length; i++) {
-		$("#messages").append(tab[i].getHtml());
-		env.msgs[tab[i].id] = tab[i];
-		
-		if (tab[i].id > env.maxId) {
-			env.maxId = tab[i].id;
-		}
-		
-		if ((env.minId < 0) || (tab[i].id < env.minId)) {
-			env.minId = tab[i].id;
-		}
-		
-		lastId = tab[i].id;
-	}
-	
-	$("#message_" + lastId).appear();
-	
-	$.force_appear();
+function refreshMessagesResponse(rep) {
+    var tab = JSON.parse(rep,revival).list_messages;
+    if(tab.erreur != undefined) {
+        alert("erreur");
+    } else {
+        for(var i=tab.length-1; i>=0; i--){
+            $("#div-list-messages").prepend(tab[i].getHtml());
+            env.msgs[tab[i].id] = tab[i];
+            if(tab[i].id > env.maxId) {
+                env.maxId = tab[i].id;
+            }
+        }
+    }
 }
 
 function refreshMessages() {
-	
-	if(!noConnection ){
-		$.ajax{(
-			type:"GET",
-			url:"ListMessages",
-			datatype:"text/plain",
-			data:"key="+env.key+"&query=''&from="+env.fromId+"&id_min="+env.maxId+"&id_message=-1&nb=-1",
-			error : function(jqXHR, textStatus, errorThrown) {
-				alert(textStatus);
-			},
-			success:refreshMessagesReponse
-		)};
-	} else {
-		refreshMessagesResponse(JSON.stringify(getFromLocalDb(env.fromId,env.maxId,-1,-1)));
-	}
+    if (env.key != undefined) {
+        if(!noConnection ) {
+            $.ajax({
+                type:"GET",
+                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/GetMessages",
+                datatype:"text/plain",
+                data:"key="+env.key+"&from="+env.fromId+"&id_max=-1&id_min="+env.maxId+"&nb="+env.nb+"&query="+env.query,
+                error : function(jqXHR, textStatus, errorThrown) {
+                    alert(textStatus);
+                },
+                success:refreshMessagesResponse
+            });
+        } else {
+            refreshMessagesResponse(JSON.stringify(getFromLocalDb(env.fromId,env.maxId,-1,-1)));
+        }
+    }
 }
 
-function refreshMessagesResponse(rep) {
-	var tab = JSON.parse(rep,revival);
-	if(tab.erreur != undefined) {
-		alert(erreur);
-	} else {
-		for(var = val.length-1,i>=0;i--){
-			$("Messages").prepend(tab[i]);
-			env.msgs(tab[i].id)= tab[i];
-			if(tab[i].id > env.maxId) {
-				env.maxId = tab[i].getHtml();
-			}
-		}
-	}
-}
 
-function newMessage(id,author,comments) {
-	var texte = $("#Message").val();
-	if(!noConnection) {
-		$.ajax ({
-			type:"GET",
-			url:"",
-			datatype:"json",
-			data:"id="+id+"&author="+author+"&texte="+texte+"&date="+new Date()+"&comments="+comments),
-			error:function(jqXHR, textStatus, errorThrown) {
-				alert(textStatus);
-			},
-			success: newMessageReponse
-		});
-	}else {
-		var m = new Message(localdb.length,{"id":env.id,"login":env.login},texte,new Date()));
-		localdb[m.id]=m;
-		newMessageReponse({});
-	}
-}
+/*####################################################################################################*
+ *---------------------------------------------new Message--------------------------------------------*
+ *####################################################################################################*/
 
 function newMessageReponse(rep) {
-	if(rep.error != undefined) {
-		alert(rep.erreur);
-	}else {
-		refreshMessages();
-	}
+    if(rep.error != undefined) {
+        alert(rep.erreur);
+    } else {
+        $("#new-message").val('');
+        $('#new-message').attr('placeholder','Racontez-nous!');
+        $("#new-message").attr('rows', 1);
+        alert('Post ok');
+
+        refreshMessages();
+    }
 }
 
-function slideshow() {
-	var myIndex = 0;
-	carousel();
+function newMessage() {
+    var texte = $("#new-message").val();
+    if (texte.length == 0) {
+        $('#new-message').attr('placeholder', 'Pour poster, veillez écrire quelque chose...');
+        return;
+    }
 
-	function carousel() {
-	    var i;
-	    var x = document.getElementsByClassName("mySlides");
-	    for (i = 0; i < x.length; i++) {
-	       x[i].style.display = "none";  
-	    }
-	    myIndex++;
-	    if (myIndex > x.length) {myIndex = 1}    
-	    x[myIndex-1].style.display = "block";  
-	    setTimeout(carousel, 4000); // Change image every 4 seconds
-	}
+    if (env.key != undefined) {
+        if(!noConnection) {
+            $.ajax ({
+                type:"GET",
+                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/PostMessage",
+                datatype:"json",
+                data:"key="+env.key+"&text="+texte,
+                error:function(jqXHR, textStatus, errorThrown) {
+                    alert(textStatus);
+                },
+                success: newMessageReponse
+            });
+        } else {
+        }
+    }
 }
+
+/*####################################################################################################*
+ *--------------------------------------------Delete Message------------------------------------------*
+ *####################################################################################################*/
+
+function deleteMessageResponse(rep, msg_id) {
+    var json = rep;
+    if (json.ErrorCode != undefined) {
+        alert("Erreur");
+    } else {
+        env.msgs.splice(msg_id);
+        $("#message_"+msg_id).remove();
+    }
+}
+
+function deleteMessage(key, msg_id) {
+    if (env.key != undefined) {
+        if(!noConnection) {
+            $.ajax ({
+                type:"GET",
+                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/DeleteMessage",
+                datatype:"json",
+                data:"key="+env.key+"&id_message="+msg_id,
+                error:function(jqXHR, textStatus, errorThrown) {
+                    alert(textStatus);
+                },
+                success: function (rep) {
+                    deleteMessageResponse(rep, msg_id);
+                }
+            });
+        } else {
+
+        }
+    }
+}
+
+/*####################################################################################################*
+ *---------------------------------------------new Comment--------------------------------------------*
+ *####################################################################################################*/
+
+function newCommentResponse(rep, id_message) {
+    var json = JSON.parse(rep);
+
+    //Empty the text area
+    $("#new-comment-"+id_message).val('');
+
+    if (json.ErrorCode) {
+        alert("erreur");
+    } else {
+        var comment = new Commentaire(json.id,json.auteur,json.texte, new Date(json.date.$date));
+        var comment_html = comment.getHtml();
+        var comments_msg = env.msgs[id_message].comments;
+        comments_msg.push(comment);
+        $("#div-comments-"+id_message).append(comment_html);
+        var d_attr_id = $("#nb-comments-"+id_message+" span").html(comments_msg.length);
+    }
+}
+
+function getIdNumber(element) {
+    var id = element.id;
+    var id_msg_regExp = new RegExp("^[^-]*-[^-]*-(.*)$");
+    var id_message;
+    if (id_msg_regExp.test(id)) {
+        id_message = RegExp["$1"];
+    }
+    return id_message;
+}
+
+function newComment(element) {
+    var id_message = getIdNumber(element);
+
+    var texte = $("#new-comment-"+id_message).val();
+    alert(texte);
+    if (env.key != undefined) {
+        if(!noConnection) {
+            $.ajax ({
+                type:"GET",
+                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/PostComment",
+                datatype:"json",
+                data:"key="+env.key+"&id_message="+id_message+"&text="+texte,
+                error:function(jqXHR, textStatus, errorThrown) {
+                    alert(textStatus);
+                },
+                success: function (rep) {
+                    newCommentResponse(rep, id_message);
+                }
+            });
+        } else {
+        }
+    }
+}
+
+/*####################################################################################################*
+ *---------------------------------------------End Message--------------------------------------------*
+ *####################################################################################################*/

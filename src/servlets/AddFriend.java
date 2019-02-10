@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
 import services.AddFriendS;
-import services.LoginS;
-import services.UserS;
-
 import javax.servlet.http.HttpServletRequest;
 
 public class AddFriend extends HttpServlet {

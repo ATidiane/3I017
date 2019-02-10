@@ -1,7 +1,5 @@
 package services;
 
-import javax.servlet.http.HttpServlet;
-
 import org.json.JSONObject;
 
 import tools.UserTools;

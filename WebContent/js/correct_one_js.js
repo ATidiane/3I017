@@ -368,7 +368,8 @@ function connecte(login, pass) {
     if (!noConnection) {
         $.ajax({
             type : "GET",
-            url : "http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/Login",
+            /*url : "http://localhost:8080/3I017/Login",*/
+            url:"http://localhost:8080/3I017/Login",
             data : "login="+login+"&mdp="+pass,
             datatype : "json",
             error : function(jqXHR, textStatus, errorThrown) {
@@ -505,7 +506,7 @@ function enregistre(prenom, nom, mail, login, pass){
     if (!noConnection) {
         $.ajax({
             type:"GET",
-            url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/createUser",
+            url:"http://localhost:8080/3I017/createUser",
             data:"nom="+nom+"&prenom="+prenom+"&mail="+mail+"&login="+login+"&mdp="+pass,
             datatype: "json",
             error : function(jqXHR, textStatus, errorThrown) {
@@ -590,7 +591,7 @@ function mailBase(mail) {
     if (!noConnection) {
         $.ajax({
             type : "GET",
-            url : "http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/",
+            url : "http://localhost:8080/3I017/",
             data : "mail="+pass,
             datatype : "json",
             error : function(jqXHR, textStatus, errorThrown) {
@@ -759,7 +760,7 @@ function logout() {
         if (!noConnection) {
             $.ajax({
                 type : "GET",
-                url : "http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/Logout",
+                url : "http://localhost:8080/3I017/Logout",
                 data : "key="+env.key,
                 datatype : "json",
                 error : function(jqXHR, textStatus, errorThrown) {
@@ -1008,7 +1009,7 @@ function completeMessages() {
         if (!noConnection)  {
             $.ajax ({
                 type:"GET",
-                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/GetMessages",
+                url:"http://localhost:8080/3I017/GetMessages",
                 datatype:"text/plain",
                 data:"key=" +env.key+ "&from=" +env.fromId+ "&id_max=" +max+ "&id_min=" +min+ "&nb=" +env.nb+ "&query=" +env.query,
                 error:function(jqXHR, textStatus, errorThrown) {
@@ -1048,7 +1049,7 @@ function refreshMessages() {
         if(!noConnection ) {
             $.ajax({
                 type:"GET",
-                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/GetMessages",
+                url:"http://localhost:8080/3I017/GetMessages",
                 datatype:"text/plain",
                 data:"key="+env.key+"&from="+env.fromId+"&id_max=-1&id_min="+env.maxId+"&nb="+env.nb+"&query="+env.query,
                 error : function(jqXHR, textStatus, errorThrown) {
@@ -1091,7 +1092,7 @@ function newMessage() {
         if(!noConnection) {
             $.ajax ({
                 type:"GET",
-                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/PostMessage",
+                url:"http://localhost:8080/3I017/PostMessage",
                 datatype:"json",
                 data:"key="+env.key+"&text="+texte,
                 error:function(jqXHR, textStatus, errorThrown) {
@@ -1123,7 +1124,7 @@ function deleteMessage(key, msg_id) {
         if(!noConnection) {
             $.ajax ({
                 type:"GET",
-                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/DeleteMessage",
+                url:"http://localhost:8080/3I017/DeleteMessage",
                 datatype:"json",
                 data:"key="+env.key+"&id_message="+msg_id,
                 error:function(jqXHR, textStatus, errorThrown) {
@@ -1180,7 +1181,7 @@ function newComment(element) {
         if(!noConnection) {
             $.ajax ({
                 type:"GET",
-                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/PostComment",
+                url:"http://localhost:8080/3I017/PostComment",
                 datatype:"json",
                 data:"key="+env.key+"&id_message="+id_message+"&text="+texte,
                 error:function(jqXHR, textStatus, errorThrown) {
@@ -1226,7 +1227,7 @@ function addFriend(key, id_friend) {
     if (key != undefined) {
         $.ajax({
             type: "GET",
-            url: "http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/AddFriend",
+            url: "http://localhost:8080/3I017/AddFriend",
             datatype: "json",
             data: "key="+key+"&id_friend="+id_friend,
             error: function(jqXHR, textStatus, errorThrown) {
@@ -1266,7 +1267,7 @@ function removeFriend(key, id_friend) {
     if (key != undefined) {
         $.ajax({
             type: "GET",
-            url: "http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/RemoveFriend",
+            url: "http://localhost:8080/3I017/RemoveFriend",
             datatype: "json",
             data: "key="+key+"&id_friend="+id_friend,
             error: function(jqXHR, textStatus, errorThrown) {
@@ -1309,7 +1310,7 @@ function listFriends(key, id_user) {
     if (key != undefined) {
         $.ajax({
             type: "GET",
-            url: "http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/ListFriends",
+            url: "http://localhost:8080/3I017/ListFriends",
             datatype: "json",
             data: "key="+key+"&id_user="+id_user,
             error: function(jqXHR, textStatus, errorThrown) {
@@ -1353,7 +1354,7 @@ function listFollowers(key, id_friend) {
     if (key != undefined) {
         $.ajax({
             type: "GET",
-            url: "http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/ListFollowers",
+            url: "http://localhost:8080/3I017/ListFollowers",
             datatype: "json",
             data: "key="+key+"&id_user="+id_friend,
             error: function(jqXHR, textStatus, errorThrown) {
@@ -1401,7 +1402,7 @@ function addLike(element) {
         if(!noConnection) {
             $.ajax({
                 type:"GET",
-                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/Like",
+                url:"http://localhost:8080/3I017/Like",
                 datatype:"json",
                 data:"key="+env.key+"&message_id="+id_message,
                 error:function(jqXHR,textStatus,errorThrown) {
@@ -1441,7 +1442,7 @@ function removeLike(element){
         if(!noConnection) {
             $.ajax({
                 type:"GET",
-                url:"http://li328.lip6.fr:8280/gr1_BALDE_CHANEMOUGAM/UnLike",
+                url:"http://localhost:8080/3I017/UnLike",
                 datatype:"json",
                 data:"key="+env.key+"&message_id="+id_message,
                 error:function(jqXHR,textStatus,errorThrown) {

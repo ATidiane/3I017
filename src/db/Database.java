@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.Mongo;
-import com.mongodb.MongoException;
 
 public class Database {
 	private DataSource dataSource;
@@ -30,6 +29,7 @@ public class Database {
 		return dataSource.getConnection();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static Connection getMySQLConnection() throws SQLException {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();

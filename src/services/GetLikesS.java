@@ -3,8 +3,6 @@ package services;
 import org.json.JSONObject;
 
 import tools.FriendTools;
-import tools.ServiceTools;
-import tools.UserTools;
 
 public class GetLikesS {
 
