@@ -4,3 +4,5 @@
 This project purpose is to develop a website like Twitter. Some called it Twister.
 
 Remarque: The only .js file used in the repository "WebContent/js" is : correct_one_js.js.
+
+If this has been useful to you, do not hesitate to leave a **star**.
